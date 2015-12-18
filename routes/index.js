@@ -6,6 +6,7 @@ var express = require('express'),
 
 router.get('/api/snippets', snippets.getSnippets);
 router.post('/api/snippets', snippets.createSnippet);
+router.get('/api/snippets/:content', snippets.findSnippetByContent);
 
 //router.get('/partials/*', function (req, res) {
 //	res.render('partials/' + req.params[0]);

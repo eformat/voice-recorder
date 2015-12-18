@@ -24,6 +24,13 @@ exports.getSnippets = function (req, res) {
 	});
 };
 
+exports.findSnippetByContent = function (req, res) {
+	console.log("findSnippetByContent: " + req.params.content.substr(8));
+	Snippet.find({"content": new RegExp('^'+ req.params.content.substr(8) +'$', "i")}).exec(function (err, collection) {
+		res.send(collection);
+	});
+};
+
 // Update
 
 // Delete
