@@ -1,0 +1,13 @@
+{
+  "name" : "ServeStaticContent",
+  "version" : "0.0.1",
+  "dependencies": {
+    "express": "~4.9.0",
+    "mongoose": "^3.8.20",
+    "compression": "~1.6.0",
+    "body-parser": "~1.8.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
