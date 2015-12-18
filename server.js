@@ -45,6 +45,7 @@ app.use(compression());
 app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
 app.use('/', routes);
 
+// preload database
 snippetModel.createDefaultSnippets();
 
 app.listen(process.env.PORT || 8080);
