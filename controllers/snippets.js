@@ -34,3 +34,15 @@ exports.findSnippetByContent = function (req, res) {
 // Update
 
 // Delete
+
+// Helper
+exports.getHostname = function (req, res) {
+	var fs = require('fs')
+	fs.readFile('/etc/hostname', 'utf8', function (err,data) {
+		if (err) {
+			return console.log(err);
+		}
+		//console.log(data);
+		res.send({"hostname" : data});
+	});
+}
