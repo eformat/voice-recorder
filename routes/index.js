@@ -4,9 +4,9 @@ var express = require('express'),
 	router = express.Router(),
 	snippets = require('../controllers/snippets');
 
-router.get('/api/snippets', snippets.getSnippets);
+router.get('/api/snippets/:user', snippets.getSnippets);
 router.post('/api/snippets', snippets.createSnippet);
-router.get('/api/snippets/:content', snippets.findSnippetByContent);
+router.get('/api/snippets/:user/:content', snippets.findSnippetByContent);
 router.get('/api/hostname', snippets.getHostname);
 
 //router.get('/partials/*', function (req, res) {

@@ -5,8 +5,8 @@ var Snippet = require('mongoose').model('Snippet');
 // Create
 
 exports.createSnippet = function (req, res) {
-	console.log("createSnippet: " + req.body.content);
-	var snippetInsert = new Snippet({"content": req.body.content });
+	console.log("createSnippet: " + req.body.content + " user: " + req.body.user);
+	var snippetInsert = new Snippet({"content": req.body.content, "user": req.body.user });
 	snippetInsert.save(function (err, result) {
 		if (!err) {
 			res.send({"result":"OK"});
@@ -19,14 +19,15 @@ exports.createSnippet = function (req, res) {
 // Read
 
 exports.getSnippets = function (req, res) {
-	Snippet.find({}).exec(function (err, collection) {
+	console.log("getSnippets: " + req.params.user);
+	Snippet.find({user: req.params.user}).exec(function (err, collection) {
 		res.send(collection);
 	});
 };
 
 exports.findSnippetByContent = function (req, res) {
-	console.log("findSnippetByContent: " + req.params.content.substr(8));
-	Snippet.find({"content": new RegExp('^'+ req.params.content.substr(8) +'$', "i")}).exec(function (err, collection) {
+	console.log("findSnippetByContent: " + req.params.content.substr(0));
+	Snippet.find({"content": new RegExp(req.params.content.substr(0), "i"), "user": req.params.user}).exec(function (err, collection) {
 		res.send(collection);
 	});
 };
